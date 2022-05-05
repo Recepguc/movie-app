@@ -1,10 +1,10 @@
-
-import { Link,useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../auth/Firebase";
 
 const Navbar = () => {
   const navigate = useNavigate();
   // const currentUser={displayName:"felix franko"}
-  const currentUser=false
+  const currentUser = false;
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -13,23 +13,22 @@ const Navbar = () => {
             <h4> React Movie App </h4>
           </Link>
           <div className="d-flex text-white align-items-center">
-          {currentUser ? (
+            {currentUser ? (
               <h5 className="mb-0 text-capitalize">
                 {currentUser?.displayName}
               </h5>
             ) : (
-              (<button
+              <button
                 className="ms-2 btn btn-outline-light"
                 onClick={() => navigate("/login")}
               >
                 Login
-              </button>)
-              
+              </button>
             )}
-             {currentUser ? (
+            {currentUser ? (
               <button
+                onClick={() => logout()}
                 className="ms-2 btn btn-outline-light"
-                
               >
                 Logout
               </button>
@@ -41,18 +40,11 @@ const Navbar = () => {
                 Register
               </button>
             )}
-          
-           
-          
-           
-            
-        
           </div>
-       
-         </div>
-       </nav> 
+        </div>
+      </nav>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
