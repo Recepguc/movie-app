@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -29,13 +31,17 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export const createUser = async (email, password, navigate) => {
+export const createUser = async (email, password, displayName, navigate) => {
   try {
     let userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+    //? kullanıcı profilini güncellemek için kullanılan firebase metodu
+    await updateProfile(auth.currentUser, {
+      displayName: displayName,
+    });
     navigate("/");
 
     console.log(userCredential);
@@ -60,4 +66,16 @@ export const signIn = async (email, password, navigate) => {
 export const logout = () => {
   signOut(auth);
   alert("logged out successfull");
+};
+
+export const userObserver = (setCurrentUser) => {
+  //? Kullanıcının signin olup olmadığını takip eden ve kullanıcı değiştiğinde yeni kullanıcıyı response olarak dönen firebase metodu
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      setCurrentUser(currentUser);
+    } else {
+      // User is signed out
+      setCurrentUser(false);
+    }
+  });
 };
