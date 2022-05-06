@@ -16,19 +16,19 @@ import {
 //* https://console.firebase.google.com/ => project settings
 //! firebase console settings bölümünden firebaseconfig ayarlarını al
 const firebaseConfig = {
-  apiKey: "AIzaSyCLUyz8ahvy0v-O3RhavF7Dq5B6e_jupdc",
-  authDomain: "movie-app-c3af1.firebaseapp.com",
-  projectId: "movie-app-c3af1",
-  storageBucket: "movie-app-c3af1.appspot.com",
-  messagingSenderId: "856523255180",
-  appId: "1:856523255180:web:f7fe0e93c44368c64cfaa9",
-  // apiKey: process.env.REACT_APP_apiKey,
-  // authDomain: process.env.REACT_APP_authDomain,
-  // projectId: process.env.REACT_APP_projectId,
-  // storageBucket: process.env.REACT_APP_storageBucket,
-  // messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  // appId: process.env.REACT_APP_appId,
-  // TMDB_KEY: process.env.REACT_APP_TMDB_KEY,
+  // apiKey: "AIzaSyCLUyz8ahvy0v-O3RhavF7Dq5B6e_jupdc",
+  // authDomain: "movie-app-c3af1.firebaseapp.com",
+  // projectId: "movie-app-c3af1",
+  // storageBucket: "movie-app-c3af1.appspot.com",
+  // messagingSenderId: "856523255180",
+  // appId: "1:856523255180:web:f7fe0e93c44368c64cfaa9",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
+  TMDB_KEY: process.env.REACT_APP_TMDB_KEY,
 };
 
 // Initialize Firebase
