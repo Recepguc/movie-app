@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -7,8 +6,9 @@ import {
   signOut,
   updateProfile,
   onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://firebase.google.com/docs/web/learn-more#config-object
@@ -16,13 +16,19 @@ import { useNavigate } from "react-router-dom";
 //* https://console.firebase.google.com/ => project settings
 //! firebase console settings bölümünden firebaseconfig ayarlarını al
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
-  TMDB_KEY: process.env.REACT_APP_TMDB_KEY,
+  apiKey: "AIzaSyCLUyz8ahvy0v-O3RhavF7Dq5B6e_jupdc",
+  authDomain: "movie-app-c3af1.firebaseapp.com",
+  projectId: "movie-app-c3af1",
+  storageBucket: "movie-app-c3af1.appspot.com",
+  messagingSenderId: "856523255180",
+  appId: "1:856523255180:web:f7fe0e93c44368c64cfaa9",
+  // apiKey: process.env.REACT_APP_apiKey,
+  // authDomain: process.env.REACT_APP_authDomain,
+  // projectId: process.env.REACT_APP_projectId,
+  // storageBucket: process.env.REACT_APP_storageBucket,
+  // messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  // appId: process.env.REACT_APP_appId,
+  // TMDB_KEY: process.env.REACT_APP_TMDB_KEY,
 };
 
 // Initialize Firebase
@@ -78,4 +84,22 @@ export const userObserver = (setCurrentUser) => {
       setCurrentUser(false);
     }
   });
+};
+
+//* https://console.firebase.google.com/
+//* => Authentication => sign-in-method => enable Google
+//! Google ile girişi enable yap
+export const signUpProvider = (navigate) => {
+  //? Google ile giriş yapılması için kullanılan firebase metodu
+  const provider = new GoogleAuthProvider();
+  //? Açılır pencere ile giriş yapılması için kullanılan firebase metodu
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      navigate("/");
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      console.log(error);
+    });
 };
