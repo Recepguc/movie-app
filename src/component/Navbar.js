@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../auth/Firebase";
+import { logOut } from "../auth/Firebase";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
@@ -30,7 +30,7 @@ const Navbar = () => {
             )}
             {currentUser ? (
               <button
-                onClick={() => logout()}
+                onClick={() => logOut()}
                 className="ms-2 btn btn-outline-light"
               >
                 Logout

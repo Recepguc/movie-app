@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../auth/Firebase";
-// import { createUser } from "../auth/firebase";
 
 const Register = () => {
   const [firstName, setFirstName] = useState();
@@ -13,8 +12,8 @@ const Register = () => {
   const handleSubmit = (e) => {
     const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
-    createUser(email,password,navigate)
-    // createUser(email, password, displayName, navigate);
+
+    createUser(email, password, displayName, navigate);
 
     console.log(firstName, lastName);
   };

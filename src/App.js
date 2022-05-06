@@ -5,6 +5,7 @@ import Approuter from "./router/Approuter";
 function App() {
   return (
     <div className="App">
+      <p>çalışıyor</p>
       <AuthContextProvider>
         <Approuter />
       </AuthContextProvider>

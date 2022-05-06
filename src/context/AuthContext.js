@@ -8,10 +8,12 @@ const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     userObserver(setCurrentUser);
-  }, []);
+  }, [currentUser]);
 
   return (
-    <AuthContextProvider value={currentUser}>{children}</AuthContextProvider>
+    <AuthContextProvider value={{ currentUser }}>
+      {children}
+    </AuthContextProvider>
   );
 };
 export default AuthContextProvider;
